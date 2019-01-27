@@ -1,9 +1,7 @@
 from flask import Flask
-from flask import render_template
-app = Flask(__name__)
+from webapp.config import Config
 
-@app.route('/')
-@app.route('/index')
-def index():
-    user = {'username': 'Miguel'}
-    return render_template('index.html', title='Home', user=user)
+app = Flask(__name__)
+app.config.from_object(Config)
+
+from webapp import routes
