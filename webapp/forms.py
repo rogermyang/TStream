@@ -5,7 +5,6 @@ from wtforms.validators import DataRequired
 
 class FeedForm(FlaskForm):
     user_input = StringField('user_input', validators=[DataRequired()])
-    feed_button = SubmitField('feed_button')
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])

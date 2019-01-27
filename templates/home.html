@@ -2,12 +2,8 @@
     <head>
         <title>Hackasaurus</title>
     </head>
-    <style type = "text/css">
-    body {
-    background-image: url("images/grassy_field.jpg");
-    }
-    </style>
     <body>
+    <!-- <img src="Egg.jpg" > -->
     <form method="POST">
         <style>
         .form_style
@@ -19,8 +15,13 @@
         }
         </style>
         <div class ="form_style">
-          <input name="text">
-          <input type="submit", value="Feed Me">
+            <p>
+              {{ form.user_input(size=32) }}<br>
+              {% for error in form.user_input.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <input type="submit", value="Feed Me">
         </div>
     </form>
     </body>
