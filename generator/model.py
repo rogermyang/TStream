@@ -8,6 +8,8 @@ import nltk
 from nltk.tokenize import TweetTokenizer
 nltk.download("punkt")
 
+# great help from http://srome.github.io/Making-A-Markov-Chain-Twitter-Bot-In-Python/
+
 
 def build_matrix(words, dictionary):
 
