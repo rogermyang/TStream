@@ -24,7 +24,7 @@ def eat():
     # e = requests.get('https://frontsend.azurewebsites.net/').content
     user_input = "EAT"
     print(user_input)
-    hatchd_filename = os.path.join(app.config['DINO_FOLDER'], 'hatched.png')
+    hatchd_filename = os.path.join(app.config['DINO_FOLDER'], 'hatched1.png')
     background_file = os.path.join(app.config['BACKGROUND_FOLDER'], 'grassy_field.jpg')
     form = FeedForm()
     if form.validate_on_submit():
