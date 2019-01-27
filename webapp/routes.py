@@ -11,6 +11,7 @@ import os
 @app.route('/', methods=['GET', 'POST'])
 def home():
     egg_filename = os.path.join(app.config['DINO_FOLDER'], 'egg.png')
+    poopimg = os.path.join(app.config['DINO_FOLDER'], 'poop.png')
     background_file = os.path.join(app.config['BACKGROUND_FOLDER'], 'back1.jpg')
     form = FeedForm()
     if form.validate_on_submit():
@@ -26,12 +27,13 @@ def eat():
     print(user_input)
     hatchd_filename = os.path.join(app.config['DINO_FOLDER'], 'hatched1.png')
     background_file = os.path.join(app.config['BACKGROUND_FOLDER'], 'back1.jpg')
+    poopimg = os.path.join(app.config['DINO_FOLDER'], 'poop.png')
     form = FeedForm()
     if form.validate_on_submit():
         print("validated")
         return redirect('/fed')
     print("not validated")
-    return render_template('eat.html', form=form, uin=user_input, dino_file=hatchd_filename, background_image=background_file)
+    return render_template('eat.html', form=form, uin=user_input, dino_file=hatchd_filename, poop=poopimg, background_image=background_file)
 
 @app.route('/fed', methods=['GET', 'POST'])
 def fed():
@@ -39,9 +41,10 @@ def fed():
     print(user_input)
     dino_filename = os.path.join(app.config['DINO_FOLDER'], 'dino.png')
     background_file = os.path.join(app.config['BACKGROUND_FOLDER'], 'back1.jpg')
+    poopimg = os.path.join(app.config['DINO_FOLDER'], 'poop.png')
     form = FeedForm()
     if form.validate_on_submit():
         print("validated")
         return redirect('/eat')
     print("not validated")
-    return render_template('fed.html', form=form, uin=user_input, dino_file=dino_filename, background_image=background_file)
+    return render_template('fed.html', form=form, uin=user_input, dino_file=dino_filename, poop=poopimg, background_image=background_file)

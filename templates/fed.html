@@ -16,11 +16,19 @@
         }
         </style>
         <div class ="form_style">
-            <br>
-            <br>
-            <br>
-            <br>
             <img src="{{ dino_file }}" alt="." >
+            <br>
+            <div id="container" style="white-space:nowrap">
+
+                <div id="image" style="display:inline;">
+                    <img src="{{ poop }}"/>
+                </div>
+
+                <div id="texts" style="display:inline; white-space:nowrap; background:white;" >
+                    {{ uin }}
+                </div>
+
+            </div>​
             <p>
               {{ form.csrf_token }}
               {{ form.user_input(size=32) }}<br>
