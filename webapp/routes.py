@@ -6,6 +6,7 @@ from webapp.call_function import call_function
 from flask import Flask, request, render_template
 import requests
 import os
+from generator.generate import generate_tweet
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -13,11 +14,14 @@ def home():
     egg_filename = os.path.join(app.config['DINO_FOLDER'], 'egg.png')
     poopimg = os.path.join(app.config['DINO_FOLDER'], 'poop.png')
     background_file = os.path.join(app.config['BACKGROUND_FOLDER'], 'back1.jpg')
+    cred_path = os.path.join(app.config['CRED_PATH'], 'twt_creds')
     form = FeedForm()
     if form.validate_on_submit():
-        print("validated")
+        # print("validated")
+        form_list = [form['user_input']]
+        # generate_tweet(cred_path, form_list)
         return redirect('/eat')
-    print("not validated")
+    # print("not validated")
     return render_template('home.html', form=form, dino_file=egg_filename, background_image=background_file)
 
 @app.route('/eat', methods=['GET', 'POST'])

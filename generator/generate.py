@@ -1,12 +1,12 @@
-import sys
+# import sys
 import nltk
 import textwrap
 from nltk.tokenize import TweetTokenizer
 nltk.download("punkt")
 
-import model as md
-import ig_utils as igu
-import twt_utils as twt
+import generator.model as md
+import generator.ig_utils as igu
+import generator.twt_utils as twt
 
 
 def generate_tweet(creds, search_terms):
