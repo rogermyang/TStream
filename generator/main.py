@@ -1,7 +1,3 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from InstagramAPI import InstagramAPI
-from PIL import Image
 import sys
 import nltk
 import textwrap

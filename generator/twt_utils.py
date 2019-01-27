@@ -1,7 +1,4 @@
 from twython import Twython
-import requests
-import pandas as pad
-import numpy as pd
 
 
 def get_creds(creds_file):
