@@ -22,9 +22,8 @@ def main():
 
     if ig_flag == 0:
         # post to twitter
-        lines = int(sys.argv[2])
-        creds = str(sys.argv[3]) # path to credentials file
-        search_terms = sys.argv[4:]
+        creds = str(sys.argv[2]) # path to credentials file
+        search_terms = sys.argv[3:]
 
         # log in to twitter with oauth1
 
@@ -39,7 +38,7 @@ def main():
         md.build_matrix(corpus, tm)
 
         # create sample and post
-        sample = md.sample_sentence(tm, lines)
+        sample = md.sample_tweet(tm, search_terms)
         twt.text_post(twitter, sample)
 
     elif ig_flag == 1:
