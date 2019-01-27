@@ -8,6 +8,6 @@ flask-wtf==0.14.2
 WTForms==2.2.1
 requests==2.21.0
 numpy==1.16.0
-selenium==1.0.2
+selenium==3.141.0
 InstagramAPI==1.0.2
 twython==3.7.0
