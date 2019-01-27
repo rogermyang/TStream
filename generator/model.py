@@ -8,11 +8,13 @@ import nltk
 from nltk.tokenize import TweetTokenizer
 nltk.download("punkt")
 
-# takes in list of words and a dictionary
-# will place the words into the dictionary
-# the dictionary is a word and a list of words
-# the list of words being known words that follow from it
+
 def build_matrix(words, dictionary):
+
+    # takes in list of words and a dictionary
+    # will place the words into the dictionary
+    # the dictionary is a word and a list of words
+    # the list of words being known words that follow from it
 
     for i in range(0, len(words)):
         word = words[i]
@@ -23,7 +25,7 @@ def build_matrix(words, dictionary):
             next_word = words[0]
 
         if word not in dictionary:
-            dictionary[word] = []
+                dictionary[word] = []
 
         dictionary[word].append(next_word)
 
@@ -31,7 +33,8 @@ def build_matrix(words, dictionary):
 def sample_sentence(matrix, length, runtime=1000):
 
     # define relevant pattern
-    pattern = re.compile('\\W+$') # at least one non word character
+    non_word_pattern = re.compile('\\W+$') # at least one non word character
+    end_pattern = re.compile(r'[.?!]\s*')
 
     sentence = ""
     current_word = random.choice(list(matrix.keys())) # grab a random word to start
@@ -41,7 +44,7 @@ def sample_sentence(matrix, length, runtime=1000):
     # need to start a sentence with upper case after all
 
     # then run it until stability
-    while i in range(0, runtime + length) or not re.match(pattern, current_word):
+    while i in range(0, runtime + length) or not re.match(end_pattern, current_word):
 
         if i == runtime:
             flag = 1
@@ -49,7 +52,7 @@ def sample_sentence(matrix, length, runtime=1000):
         if i >= runtime and flag == 1:
 
             # start sentence with a capital word
-            if((re.match(pattern, current_word) or i == runtime) and current_word != ','):
+            if((re.match(non_word_pattern, current_word) or i == runtime) and current_word != ','):
                 # if you ended with punctuation
                 # then you need to find a capital!
                 while not current_word[0].isupper():
@@ -69,7 +72,7 @@ def sample_sentence(matrix, length, runtime=1000):
             else:
                 current_word = np.random.choice(matrix[current_word], size=1)[0]
 
-                if(re.match(pattern, current_word)):
+                if(re.match(non_word_pattern, current_word)):
                     sentence += current_word
                 else:
                     sentence += " " + current_word
