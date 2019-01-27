@@ -18,8 +18,12 @@ def home():
     form = FeedForm()
     if form.validate_on_submit():
         # print("validated")
-        form_list = [form['user_input']]
-        # generate_tweet(cred_path, form_list)
+        form_list = [form.user_input.data]
+
+        print("\n\n\n\n\n\n\n\n")
+        print(form_list)
+
+        generate_tweet(cred_path, form_list)
         return redirect('/eat')
     # print("not validated")
     return render_template('home.html', form=form, dino_file=egg_filename, background_image=background_file)
