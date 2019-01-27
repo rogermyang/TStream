@@ -16,6 +16,7 @@
         </style>
         <div class ="form_style">
             <p>
+              {{ form.csrf_token }}
               {{ form.user_input(size=32) }}<br>
               {% for error in form.user_input.errors %}
               <span style="color: red;">[{{ error }}]</span>

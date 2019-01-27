@@ -10,7 +10,9 @@ def home():
     form = FeedForm()
     if form.validate_on_submit():
         # call_function(form.user_input)
+        print("validated")
         return redirect('/eat')
+    print("not validated")
     return render_template('home.html', form=form)
 
 @app.route('/eat')
