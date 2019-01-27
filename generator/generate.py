@@ -1,6 +1,4 @@
-import sys
 import nltk
-import textwrap
 from nltk.tokenize import TweetTokenizer
 nltk.download("punkt")
 
