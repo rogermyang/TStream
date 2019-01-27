@@ -1,28 +1,45 @@
-import numpy as np
-import scipy as sp
-import pandas as pd
-import re
-import random
-import pykov
+import sys
 import nltk
+import textwrap
 from nltk.tokenize import TweetTokenizer
 nltk.download("punkt")
 
-import generator as md
+import model as md
 
 def main():
 
-    df = pd.read_csv("tweets.csv")
-    df_text = df.Text
+
+    src_path = str(sys.argv[1]) # data path
+    lines = int(sys.argv[2]) # approximately how many words in text to generate
+    ln_break = int(sys.argv[3]) # how many characters before newline in output file
+
+    # actually run this
+    #'''
     tm = {} # transition matrix as a dict
     tknzr = TweetTokenizer()
 
+    print("generating the dictionary...")
 
-    for i in range(0, 1000):
-        corpus = tknzr.tokenize(df_text[i])
-        md.build_matrix(corpus, tm)
+    with open(src_path, "r+") as r:
+        for line in r:
+            corpus = tknzr.tokenize(line)
+            md.build_matrix(corpus, tm)
+    #'''
 
-    print(md.sample_sentence(tm, 30))
+    '''
+    # this is for quick use when testing sample sentence functionality
+    with open("dict", "r+") as d:
+        for line in d:
+            tm = eval(line)
+    '''
+
+    print("making some text for you...")
+
+    # print to console and print to file
+    with open("output", "w+") as f:
+        sample = md.sample_sentence(tm, lines)
+        print(textwrap.fill(sample, ln_break))
+        print(textwrap.fill(sample, ln_break), file=f)
 
 if __name__ == '__main__':
     main()
