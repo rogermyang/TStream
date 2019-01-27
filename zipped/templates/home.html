@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Hackasaurus</title>
+    </head>
+    <body>
+    <!-- <img src="Egg.jpg" > -->
+    <form method="POST">
+        <style>
+        .form_style
+        {
+        margin: 250 auto;
+        margin-left: auto;
+        margin-right: auto;
+        text-align:center;
+        }
+        </style>
+        <div class ="form_style">
+            <img src="{{ egg_filename }}" alt="." >
+            <p>
+              {{ form.csrf_token }}
+              {{ form.user_input(size=32) }}<br>
+              {% for error in form.user_input.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <input type="submit", value="Feed Me">
+        </div>
+    </form>
+    </body>
+</html>
