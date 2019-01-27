@@ -1,33 +1,21 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Hackasaurus</title>
-
     </head>
-    <body background="{{ background_image }}">
+    <body>
     <!-- <img src="Egg.jpg" > -->
     <form method="POST">
         <style>
         .form_style
         {
-        margin: auto;
+        margin: 250 auto;
         margin-left: auto;
         margin-right: auto;
         text-align:center;
         }
         </style>
         <div class ="form_style">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <img src="{{ egg_file }}" alt="." >
+            <img src="{{ egg_filename }}" alt="." >
             <p>
               {{ form.csrf_token }}
               {{ form.user_input(size=32) }}<br>
