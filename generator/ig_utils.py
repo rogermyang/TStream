@@ -6,10 +6,26 @@ from InstagramAPI import InstagramAPI
 # some utilities for working with the instagram API
 # pretty barebones so far
 
-def login(user, pw):
+def get_creds(creds_file):
+
+    # parse key file for user and password and log in with them
+
+    creds = []
+    with open(creds_file, "r+") as f:
+        for line in f:
+            creds.append(line.strip())
+    return creds
+
+def login(creds_file):
 
     # this function will start the session
     # and return a validated ig object
+
+    creds = get_creds(creds_file)
+    user = creds[0]
+    pw = creds[1]
+
+    # start browser
 
     browser = webdriver.Chrome("/usr/bin/chromedriver")
     browser.get("https://www.instagram.com/accounts/login")
