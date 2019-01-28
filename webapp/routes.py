@@ -18,7 +18,7 @@ def home():
     form = FeedForm()
     if form.validate_on_submit():
         # print("validated")
-        form_list = [form.user_input.data]
+        form_list = form.user_input.data.split(" ")
 
         print("\n\n\n\n\n\n\n\n")
         print(form_list)
