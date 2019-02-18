@@ -4,7 +4,7 @@ from nltk.tokenize import TweetTokenizer
 nltk.download("punkt")
 
 import generator.model as md
-import generator.ig_utils as igu
+# import generator.ig_utils as igu
 import generator.twt_utils as twt
 
 
@@ -29,25 +29,25 @@ def generate_tweet(creds, search_terms):
     twt.text_post(twitter, sample)
 
 
-def generate_ig(src_path, creds, sentence_length, photo_path):
-
-    tm = {}
-    tknzr = TweetTokenizer()
-
-    with open(src_path, "r+") as r:
-        for line in r:
-            corpus = tknzr.tokenize(line)
-            md.build_matrix(corpus, tm)
-
-
-    print("making some text for you...")
-
-    # generate text
-    sample = md.sample_sentence(tm, sentence_length)
-
-
-    # or you could also just post it to instagram
-
-    ig = igu.login(creds)
-    # post photo with credentials
-    igu.post(ig, photo_path, sample)
+# def generate_ig(src_path, creds, sentence_length, photo_path):
+#
+#     tm = {}
+#     tknzr = TweetTokenizer()
+#
+#     with open(src_path, "r+") as r:
+#         for line in r:
+#             corpus = tknzr.tokenize(line)
+#             md.build_matrix(corpus, tm)
+#
+#
+#     print("making some text for you...")
+#
+#     # generate text
+#     sample = md.sample_sentence(tm, sentence_length)
+#
+#
+#     # or you could also just post it to instagram
+#
+#     ig = igu.login(creds)
+#     # post photo with credentials
+#     igu.post(ig, photo_path, sample)
