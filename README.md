@@ -11,6 +11,8 @@ Find hackasaurus at http://hackasaurus.pythonanywhere.com/
 
 Check out hackasaurus' generated tweets at https://twitter.com/OHackasaurus
 
+![alt text](https://raw.githubusercontent.com/basilwong/hackasaurus/master/static/dino/dino.png)
+
 ## Dependancies
 
  * Flask
