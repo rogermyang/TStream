@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for
-from application import app
+from flask_app import app
 from webapp.forms import LoginForm
 from webapp.forms import FeedForm
 from webapp.call_function import call_function
